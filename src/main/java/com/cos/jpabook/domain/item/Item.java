@@ -11,12 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.cos.jpabook.domain.Category;
+import com.cos.jpabook.exception.NotEnoughStockException;
 
 import lombok.Data;
 
@@ -38,5 +37,15 @@ public abstract class Item {
 	@ManyToMany(mappedBy = "items")
 	private List<Category> categories = new ArrayList<Category>();
 	
-	
+	// 비즈니스 로직
+	// stock 증가
+	public void addStock(int quantity) {this.stockQuantity += quantity;}
+	// stock 감소
+	public void removeStock(int quantity) {
+		int restStock = this.stockQuantity - quantity;
+		if(restStock < 0) {
+			throw new NotEnoughStockException("need more stock");
+		} 
+		this.stockQuantity = restStock;
+	}
 }

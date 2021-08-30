@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -23,11 +25,13 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "member_id")
 	private Integer id;
-	private String username;
+	
+	private String name;
 	
 	@Embedded
 	private Address address;
 	
+//	@JsonIgnore
 	@OneToMany(mappedBy = "member")
-	private List<Order> orders = new ArrayList<>();
+	private List<Order> orders = new ArrayList<>();  
 }
