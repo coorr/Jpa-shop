@@ -1,6 +1,8 @@
 package com.cos.jpabook.domain;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,14 +17,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Data
+@Getter @Setter
 public class Delivery {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "delivery_id")
 	private Integer id;
 	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "delivery",fetch = FetchType.LAZY)
 	private Order order;
 	

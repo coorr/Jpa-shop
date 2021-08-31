@@ -14,10 +14,16 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "member")
 public class Member {
 	
@@ -31,7 +37,7 @@ public class Member {
 	@Embedded
 	private Address address;
 	
-//	@JsonIgnore
+	@JsonIgnore
 	@OneToMany(mappedBy = "member")
 	private List<Order> orders = new ArrayList<>();  
 }

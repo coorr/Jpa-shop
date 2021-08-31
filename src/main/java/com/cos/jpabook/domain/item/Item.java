@@ -18,9 +18,11 @@ import com.cos.jpabook.domain.Category;
 import com.cos.jpabook.exception.NotEnoughStockException;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter @Setter
 @Table(name = "item")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)   // 한개의 테이블에 많은 컬럼이 담겨있음
 @DiscriminatorColumn(name = "dtype") //

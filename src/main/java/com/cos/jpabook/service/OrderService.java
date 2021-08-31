@@ -18,11 +18,12 @@ import com.cos.jpabook.repository.OrderSearch;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-@Data
+@Slf4j
 public class OrderService {
 
 	private final OrderRepository orderRepository;
@@ -48,6 +49,7 @@ public class OrderService {
 		
 		// 주문 저장
 		orderRepository.save(order);
+		log.info("member : ", order.getMember()) ;
 		return order.getId();
 	}
 	
