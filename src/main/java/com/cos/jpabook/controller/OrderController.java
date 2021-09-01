@@ -45,6 +45,7 @@ public class OrderController {
 	public String create(@RequestParam("memberId") Integer memberId,
 							@RequestParam("itemId") Integer itemId,
 							@RequestParam("count") int count) {
+		
 		orderService.order(memberId, itemId, count);
 		return "redirect:/orders";
 	}

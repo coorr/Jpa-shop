@@ -41,13 +41,15 @@ public class Order {
 	private Member member;
 	
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-	private List<OrderItem> orderItems = new ArrayList<>();
+	private List<OrderItem> orderItems = new ArrayList<>();  // 갯수 , 책 이름, 가격
 	
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "delivery_id")
 	private Delivery delivery;
 	
 	private LocalDateTime orderDate;   // 주문시간
+	
+	
 	
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status; // 주문상태 - order, cancel
