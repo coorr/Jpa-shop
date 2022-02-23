@@ -3,12 +3,13 @@ package com.cos.jpabook.domain.item;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter @Setter
 @DiscriminatorValue("A")
-public class Album extends Item {  // 앨범
+public class Album extends Item {  
 	private String artist;
 	private String etc;
 }
